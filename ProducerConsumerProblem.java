@@ -19,6 +19,7 @@ class SharedResource {
     public synchronized void put(int i) {
         while (flag == true) {
             try {
+                // calling thread to give up the monitor and sleep until another thread enters the same monitor and calls notify() or notifyAll().
                 this.wait();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -28,6 +29,7 @@ class SharedResource {
         this.i = i;
         flag = true;
         System.out.println("Put: " + i);
+        // wakes up the thread that called wait() on the same object. notifyAll() wakes up all the threads that called wait() on the same object and one of the thread will be granted access.
         notify();
     }
 
