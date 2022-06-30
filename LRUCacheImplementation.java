@@ -2,6 +2,7 @@
 //1. Fixed size - The cache size is bounded.
 //2. Faster access - Insert and search operations with O(1) time complexity
 //3. Faster eviction - If the cache is full, remove the least recently used entity from the cache
+//4. Enhancements - Evict the entries from both the map and list by using a scheduled executors service, i.e. Run the new thread to scan for all product data entries and remove the ones whose timestamp is older than current timestamp. Note, we need to store the time stamp as an attribute in product data. 
 
 public class LRUCacheImplementation {
 	private final int CACHE_SIZE = 1000;
