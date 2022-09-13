@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * "Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000".
@@ -15,8 +16,12 @@ public final class LongestPalindromicSubString {
     }
 
     private static void longestPalindromicSubString(final String word) {
+        if(Objects.isNull(word)) {
+            throw new IllegalArgumentException("string cannot be null.");
+        }
+        
         final List<Triple> triples = new ArrayList<>();
-        int nextCharacterIndex = 0, firstOccurenceIndex = 0, lastOccurenceIndex = 0;
+        int nextCharacterIndex = 0, firstOccurenceIndex = 0, lastOccurenceIndex;
 
         while (firstOccurenceIndex < word.length() - 1) {
             final Character character = word.charAt(nextCharacterIndex);
@@ -80,5 +85,3 @@ final class Triple {
         return difference;
     }
 }
-
-
