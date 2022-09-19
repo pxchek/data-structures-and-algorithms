@@ -9,12 +9,19 @@ public class LinkedListReverseKGroups {
         final Scanner scanner = new Scanner(System.in);
         final LinkedList<Integer> list = new LinkedList<>();
         final LinkedList<Integer> result = new LinkedList<>();
+
         try (scanner) {
             System.out.println("Enter k (groups): ");
             int k = scanner.nextInt();
-            System.out.println("Enter the elements (Enter 'done' to end sequence of integers: ");
-            while (scanner.hasNextInt()) {
-                list.add(scanner.nextInt());
+            System.out.println("Enter the elements: ");
+            while (scanner.hasNext()) {
+                if (scanner.hasNextInt()) {
+                    list.add(scanner.nextInt());
+                } else {
+                    if (scanner.next().equals("done")) {
+                        break;
+                    }
+                }
             }
             reverse(list, result, k);
         }
