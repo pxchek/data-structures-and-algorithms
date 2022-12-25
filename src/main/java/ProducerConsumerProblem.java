@@ -30,7 +30,7 @@ class SharedResource {
         flag = true;
         System.out.println("Put: " + i);
         // wakes up the thread that called wait() on the same object. notifyAll() wakes up all the threads that called wait() on the same object and one of the thread will be granted access.
-        notify();
+        this.notify();
     }
 
     public synchronized int get() {
@@ -44,7 +44,7 @@ class SharedResource {
 
         System.out.println("Got: " + i);
         flag = false;
-        notify();
+        this.notify();
         return i;
     }
 }
