@@ -19,7 +19,12 @@ class SharedResource {
     public synchronized void put(int i) {
         while (flag == true) {
             try {
-                // calling thread to give up the monitor and sleep until another thread enters the same monitor and calls notify() or notifyAll().
+                // Atomically releases the lock and suspends the current thread allowing other threads to acquire the lock.
+                // The method reacquires the lock before returning.
+
+                // Thread state for a thread blocked waiting for a monitor lock.
+                // A thread in the blocked state is waiting for a monitor lock to enter a synchronized block/method or reenter a synchronized block/method after calling
+                // Object.wait.
                 this.wait();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
